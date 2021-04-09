@@ -55,6 +55,4 @@ public class Person {
             return this.firstName + " " + this.lastName;
         }
     }
-
-
 }
