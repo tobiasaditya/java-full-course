@@ -12,9 +12,10 @@ public class App {
         while(counter<=10){
             System.out.println("Enter number #"+counter);
             boolean hasInt = scanner.hasNextInt();
-            scanner.nextLine();
+            
             if(hasInt){
                 input = scanner.nextInt();
+                scanner.nextLine();
                 sum+=input;
                 counter++; 
             }
