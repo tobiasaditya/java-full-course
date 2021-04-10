@@ -10,7 +10,6 @@ public class Cylinder extends Circle{
         }
     }
 
-
     public double getHeight() {
         return this.height;
     }
