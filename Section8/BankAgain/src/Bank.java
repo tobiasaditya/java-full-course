@@ -63,7 +63,7 @@ public class Bank {
                 if (isPrintTransaction){
                     System.out.println("Transactions");
                     for(int j=0;j<customer.getTransactions().size();j++){
-                        System.out.println("["+(j+1)+"] Amount "+customer.getTransactions().get(j));
+                        System.out.println("["+(j+1)+"]  Amount "+customer.getTransactions().get(j));
                     }
                 }
 
