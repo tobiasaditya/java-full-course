@@ -6,14 +6,15 @@ public class MobilePhone {
 
 
     public MobilePhone(String myNumber) {
-        this.myContacts.add(Contact.createContact("name", myNumber));
         this.myNumber = myNumber;
     }
 
     public boolean addNewContact(Contact contact){
-        int position = findContact(contact);
+        int position = findContact(contact.getName());
+        
         if (position<0){
-            myContacts.add(contact);
+            this.myContacts.add(contact);
+            System.out.println(contact.getName() + " was added to contacts.");
             return true;
         }
         return false;
@@ -22,34 +23,35 @@ public class MobilePhone {
     public boolean updateContact(Contact oldContact, Contact newContact){
         int position = findContact(oldContact);
         if (position>=0){
-            myContacts.set(position, newContact);
+            this.myContacts.set(position, newContact);
+            System.out.println(oldContact.getName()  + " was updated");
             return true;
         }
         return false;
     }
 
     public boolean removeContact(Contact contact){
-        int position = findContact(contact);
+        int position = findContact(contact.getName());
         if (position>=0){
-            myContacts.remove(position);
+            this.myContacts.remove(position);
+            System.out.println(contact.getName()+" was removed");
             return true;
         }
         return false;
     }
 
     public int findContact(Contact contact){
-        System.out.println("Finding contact...");
-        String nama = contact.getName();
-        return findContact(nama);
+        return this.myContacts.indexOf(contact);
+        //String nama = contact.getName();
+        //return findContact(nama);
     }
 
     private int findContact(String item){
         System.out.println("Using this");
-        for (int i =0;i<myContacts.size();i++){
+        for (int i =0;i<this.myContacts.size();i++){
             //Pecah contact jadi nama dan nomor
-            String nama = myContacts.get(i).getName();
-            String nomor = myContacts.get(i).getPhoneNumber(); 
-            if(nama == item || nomor == item){
+            String nama = this.myContacts.get(i).getName();
+            if(nama.equals(item)){
                 return i;
             }
 
@@ -58,10 +60,10 @@ public class MobilePhone {
     }
 
     public Contact queryContact(String name){
-        for (int i =0;i<myContacts.size();i++){
-            String nama = myContacts.get(i).getName();
-            if(nama == name){
-                return myContacts.get(i);
+        for (int i =0;i<this.myContacts.size();i++){
+            String nama = this.myContacts.get(i).getName();
+            if(nama.equals(name)){
+                return this.myContacts.get(i);
             }
         }
         return null;
@@ -69,8 +71,8 @@ public class MobilePhone {
 
     public void printContacts(){
         System.out.println("Contact List:");
-        for(int i =0;i<myContacts.size();i++){
-            System.out.println(i+1 + ". "+myContacts.get(i).getName()+ " -> "+myContacts.get(i).getPhoneNumber());
+        for(int i =0;i<this.myContacts.size();i++){
+            System.out.println(i+1 + ". "+this.myContacts.get(i).getName()+ " -> "+this.myContacts.get(i).getPhoneNumber());
         }
     }
 
